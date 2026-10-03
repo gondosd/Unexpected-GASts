@@ -767,7 +767,7 @@ void UOptionsDataRegistry::InitKeyBindingsCollectionTab(ULocalPlayer* InOwningLo
 
 	//Inputs
 	{
-		for (const TPair<FGameplayTag, TObjectPtr<UEnhancedPlayerMappableKeyProfile>>& ProfilePair : EIUserSettings->GetAllSavedKeyProfiles())
+		for (const TTuple<FString, TObjectPtr<UEnhancedPlayerMappableKeyProfile>>& ProfilePair : EIUserSettings->GetAllAvailableKeyProfiles())
 		{
 			TObjectPtr<UEnhancedPlayerMappableKeyProfile> MappableKeyProfile = ProfilePair.Value;
 			check(MappableKeyProfile);

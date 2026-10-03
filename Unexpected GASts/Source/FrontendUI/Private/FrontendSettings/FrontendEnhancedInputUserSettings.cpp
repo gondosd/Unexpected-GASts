@@ -6,11 +6,11 @@
 #include "EnhancedInputModule.h"
 
 void UFrontendEnhancedInputUserSettings::ResetAllPlayerKeysInRowForSlot(const FMapPlayerKeyArgs& InArgs,
-                                                                 FGameplayTagContainer& FailureReason)
+                                                                        FGameplayTagContainer& FailureReason)
 {
 	// Get the key profile that was specified
 	UFrontendEnhancedPlayerMappableKeyProfile* KeyProfile = CastChecked<UFrontendEnhancedPlayerMappableKeyProfile>(
-		InArgs.ProfileId.IsValid() ? GetKeyProfileWithIdentifier(InArgs.ProfileId) : GetCurrentKeyProfile());
+		InArgs.ProfileIdString.IsEmpty() ? GetActiveKeyProfile() : GetKeyProfileWithId(InArgs.ProfileIdString));
 
 	if (FKeyMappingRow* ExistingMappings = KeyProfile->PlayerMappedKeys.Find(InArgs.MappingName))
 	{
@@ -18,7 +18,7 @@ void UFrontendEnhancedInputUserSettings::ResetAllPlayerKeysInRowForSlot(const FM
 		{
 			if (Mapping.GetSlot() != InArgs.Slot)
 				continue;
-				
+
 			// Then set the player mapped key
 			Mapping.ResetToDefault();
 
