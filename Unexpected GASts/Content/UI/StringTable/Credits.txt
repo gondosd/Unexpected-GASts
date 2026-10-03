@@ -1,0 +1,184 @@
+<Bold>Credits: </>
+
+
+---------------------------------------------------------------------------
+
+
+Special thanks to <Bold>Göndi</>, who was always besides me,
+even in the hardest times
+
+
+---------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<Headline> [Management] </>
+
+<Bold> Idea Owner: </> Göndös Dániel
+
+<Bold> Producer: </> Göndös Dániel
+
+<Bold> CEO: </> Göndös Dániel
+
+<Bold> CTO: </> Göndös Dániel
+
+<Bold> Project Manager: </> Göndös Dániel
+
+
+
+
+
+
+	<Headline> [Programming] </>
+
+<Bold> Programmer Lead: </> Göndös Dániel
+
+<Bold> Software Engineer: </> Göndös Dániel
+
+<Bold> Senior Programmer: </> Göndös Dániel
+
+<Bold> Gameplay Scripter:</> Göndös Dániel
+
+<Bold> Animation Programmer: </> Göndös Dániel
+
+<Bold> UI Programmer: </> Göndös Dániel
+
+<Bold> Audio Programmer: </> Göndös Dániel
+
+
+
+
+
+
+
+	<Headline> [Design] </>
+
+<Bold> Gameplay Designer: </> Göndös Dániel
+
+<Bold> Technical Designer: </> Göndös Dániel
+
+<Bold> Narrative Designer: </> Göndös Dániel
+
+<Bold> Sound Designer: </> Göndös Dániel
+
+<Bold> UX\UI: </> Göndös Dániel
+
+
+
+
+
+
+	<Headline> [Art] </>
+
+<Bold> Concept Artist: </> Göndös Dániel
+
+<Bold> Visual Effects: </> Göndös Dániel
+
+<Bold> Tech Artist: </> Göndös Dániel
+
+<Bold> 3D modelling: </> Göndös Dániel
+
+<Bold> Animator: </> Göndös Dániel
+
+<Bold> Texturing: </> Göndös Dániel
+
+
+
+
+
+
+	<Headline> [Sound] </>
+
+<Bold> Foley Artist</> Göndös Dániel
+
+<Bold> Music Producer </> Göndös Dániel
+
+
+
+
+
+
+	<Headline> [Quality Assurance] </>
+
+<Bold> QA Lead: </> Göndös Dániel
+
+<Bold> QA Engineer: </> Göndös Dániel
+
+
+
+
+
+
+	<Headline> [Supporting Roles] </>
+
+<Bold> AI Expert: </> Göndös Dániel
+
+<Bold> Unreal Trainer: </> Göndös Dániel
+
+<Bold> Community Manager: </> Göndös Dániel
+
+<Bold> Localisation: </> Göndös Dániel
+
+<Bold> Dev-ops Engineer: </> Göndös Dániel
+
+<Bold> Financial Advisor: </> Göndös Dániel
+
+<Bold> Legal Advisor: </> Göndös Dániel
+
+<Bold> Unpayed Intern: </> Göndös Dániel
+
+<Bold> Moral Support & Office Jester: </> Göndös Dániel
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Headline> THANKS FOR PLAYING </>
+
+
+
+
+
+
+
+
+
+
+
