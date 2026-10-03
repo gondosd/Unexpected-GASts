@@ -30,6 +30,10 @@
 		{
 			"Name": "MediaMovieStreamer",
 			"Enabled": true
+		},
+		{
+			"Name": "GameplayAbilities",
+			"Enabled": true
 		}
 	]
 }
