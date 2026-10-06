@@ -5,7 +5,7 @@
 
 #include "CommonInputSubsystem.h"
 #include "FontendFunctionLibrary.h"
-#include "FrontendGameplayTags.h"
+#include "GD_GameplayTags.h"
 #include "Subsystems/FrontendUISubsystem.h"
 #include "Widgets/Components/FrontendCommonButtonBase.h"
 #include "Widgets/Options/Widget_KeyRemapScreen.h"
@@ -50,8 +50,8 @@ void UWidget_ListEntry_KeyRemap::OnRemapKeyButtonClicked()
 	if (GetIsInteractable())
 	{
 		UFrontendUISubsystem::Get(this)->PushSoftWidgetToStackAsync(
-			FrontendGameplayTags::Frontend_WidgetStack_Modal,
-			UFontendFunctionLibrary::GetFrontendSoftWidgetClassByTag(FrontendGameplayTags::Frontend_Widget_KeyRemapScreen),
+			FrontendGameplayTags::Stacks::Frontend_WidgetStack_Modal,
+			UFontendFunctionLibrary::GetFrontendSoftWidgetClassByTag(FrontendGameplayTags::Widgets::Frontend_Widget_KeyRemapScreen),
 			[this](EAsyncPushWidgetState PushState, UWidget_ActivatableWidgetBase* PushedWidget)
 			{
 				if (PushState == EAsyncPushWidgetState::OnCreatedBeforePush)

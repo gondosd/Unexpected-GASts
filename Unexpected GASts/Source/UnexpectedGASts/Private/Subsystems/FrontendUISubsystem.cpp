@@ -8,7 +8,7 @@
 #include "Widgets/Widget_PrimaryLayout.h"
 #include "Widgets/CommonActivatableWidgetContainer.h"
 #include "Widgets/Widget_ActivatableWidgetBase.h"
-#include "FrontendGameplayTags.h"
+#include "GD_GameplayTags.h"
 #include "FrontendDebugHelper.h"
 #include "Widgets/Widget_ConfirmScreen.h"
 
@@ -107,8 +107,8 @@ void UFrontendUISubsystem::PushConfirmScreenToModalStackAsynch(EConfirmScreenTyp
 	check(CreatedInfoObject);
 
 	PushSoftWidgetToStackAsync(
-		FrontendGameplayTags::Frontend_WidgetStack_Modal,
-		UFontendFunctionLibrary::GetFrontendSoftWidgetClassByTag(FrontendGameplayTags::Frontend_Widget_ConfirmScreen),
+		FrontendGameplayTags::Stacks::Frontend_WidgetStack_Modal,
+		UFontendFunctionLibrary::GetFrontendSoftWidgetClassByTag(FrontendGameplayTags::Widgets::Frontend_Widget_ConfirmScreen),
 		[CreatedInfoObject, ButtonClickedCallback](EAsyncPushWidgetState InPushState,
 		                                           UWidget_ActivatableWidgetBase* PushedWidget)
 		{

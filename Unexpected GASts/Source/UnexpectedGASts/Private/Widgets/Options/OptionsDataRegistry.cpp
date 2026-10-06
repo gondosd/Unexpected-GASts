@@ -6,7 +6,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "FontendFunctionLibrary.h"
 #include "FrontendDebugHelper.h"
-#include "FrontendGameplayTags.h"
+#include "GD_GameplayTags.h"
 #include "FrontendSettings/FrontendGameUserSettings.h"
 #include "Internationalization/StringTableRegistry.h"
 #include "UserSettings/EnhancedInputUserSettings.h"
@@ -126,7 +126,7 @@ void UOptionsDataRegistry::InitGameplayCollectionTab()
 		UListDataObject_String* TestItem = NewObject<UListDataObject_String>();
 		TestItem->SetDataID(FName("TestItem"));
 		TestItem->SetDataDisplayName(FText::FromString("Test Image Item"));
-		TestItem->SetSoftDescriptionImage(UFontendFunctionLibrary::GetOptionsSoftImageByTag(FrontendGameplayTags::Frontend_Image_TestImage));
+		TestItem->SetSoftDescriptionImage(UFontendFunctionLibrary::GetOptionsSoftImageByTag(FrontendGameplayTags::Images::Frontend_Image_TestImage));
 		TestItem->SetDescriptionRichText(FText::FromString(TEXT(""
 			"The image to display can be specified in the project settings."
 			"It can be anything the developer assigned in there")));
@@ -134,7 +134,7 @@ void UOptionsDataRegistry::InitGameplayCollectionTab()
 
 		GameplayTabCollection->AddChildListData(TestItem);
 	}
-
+	
 	RegisteredOptionsTabCollections.Add(GameplayTabCollection);
 }
 
