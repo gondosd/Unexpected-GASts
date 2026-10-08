@@ -35,4 +35,38 @@ namespace FrontendGameplayTags
 
 namespace GASTags
 {
+	namespace GASAbilities
+	{
+		//Primary
+		//Secondary
+		//Tertiary
+		//BaseAttack
+	}
+	
+	namespace SetByCaller
+	{
+		//Projectile
+	}
+
+	namespace Event
+	{
+		//Combat
+		//DamageTaken
+		//Healed
+		//Kill
+		//System
+		//QuestCompleted
+	}
+
+	namespace State
+	{
+		//Dead
+		//Stunned
+		//Invulnerable
+		//Airborne
+	}
+
+	namespace Cooldown
+	{
+	}
 }
