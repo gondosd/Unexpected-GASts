@@ -68,7 +68,7 @@ void AGD_BaseCharacter::ResetAttributes()
 {
 	if (!HasAuthority()) return;
 	
-	InitializeAttributes(ResetAttributeEffect);
+	InitializeAttributes(InitializeAttributeEffect);
 	
 }
 

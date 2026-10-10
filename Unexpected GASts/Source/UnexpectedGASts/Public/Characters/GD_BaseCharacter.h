@@ -61,9 +61,6 @@ public:
 protected:
 	UPROPERTY(EditDefaultsOnly, Category = "GAS|Effects")
 	TSubclassOf<UGameplayEffect> InitializeAttributeEffect;
-	
-	UPROPERTY(EditDefaultsOnly, Category = "GAS|Effects")
-	TSubclassOf<UGameplayEffect> ResetAttributeEffect;
 
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "GAS|Abilities")
