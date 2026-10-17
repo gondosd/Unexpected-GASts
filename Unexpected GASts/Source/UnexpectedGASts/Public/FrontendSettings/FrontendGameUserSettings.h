@@ -53,7 +53,7 @@ public:
 	FORCEINLINE float GetOverallVolume() const { return OverallVolume; }
 
 	UFUNCTION()
-	FORCEINLINE void SetOverallVolume(float InVolume);
+	void SetOverallVolume(float InVolume);
 	UFUNCTION()
 	FORCEINLINE float GetMusicVolume() const { return MusicVolume; }
 
