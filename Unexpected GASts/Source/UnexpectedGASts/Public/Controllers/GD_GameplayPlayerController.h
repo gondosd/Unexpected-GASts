@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
-#include "GD_PlayerController.generated.h"
+#include "GD_GameplayPlayerController.generated.h"
 
 
 struct FGameplayTag;
@@ -13,7 +13,7 @@ class UInputAction;
 struct FInputActionValue;
 
 UCLASS(Abstract)
-class UNEXPECTEDGASTS_API AGD_PlayerController : public APlayerController
+class UNEXPECTEDGASTS_API AGD_GameplayPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 
@@ -22,25 +22,25 @@ protected:
 
 private:
 	
-	UPROPERTY(EditDefaultsOnly, Category = "GAS|Input")
+	UPROPERTY(EditDefaultsOnly, Category = "GD|Input")
 	TArray<TObjectPtr<UInputMappingContext>> InputMappingContexts;
 	
-	UPROPERTY(EditDefaultsOnly, Category = "GAS|Input|Movement")
+	UPROPERTY(EditDefaultsOnly, Category = "GD|Input|Movement")
 	TObjectPtr<UInputAction> JumpAction;
 	
-	UPROPERTY(EditDefaultsOnly, Category = "GAS|Input|Movement")
+	UPROPERTY(EditDefaultsOnly, Category = "GD|Input|Movement")
 	TObjectPtr<UInputAction> MoveAction;
 	
-	UPROPERTY(EditDefaultsOnly, Category = "GAS|Input|Movement")
+	UPROPERTY(EditDefaultsOnly, Category = "GD|Input|Movement")
 	TObjectPtr<UInputAction> LookAction;
 	
-	UPROPERTY(EditDefaultsOnly, Category = "GAS|Input|Abilities")
+	UPROPERTY(EditDefaultsOnly, Category = "GD|Input|Abilities")
 	TObjectPtr<UInputAction> PrimaryAction;
 	
-	UPROPERTY(EditDefaultsOnly, Category = "GAS|Input|Abilities")
+	UPROPERTY(EditDefaultsOnly, Category = "GD|Input|Abilities")
 	TObjectPtr<UInputAction> SecondaryAction;
 	
-	UPROPERTY(EditDefaultsOnly, Category = "GAS|Input|Abilities")
+	UPROPERTY(EditDefaultsOnly, Category = "GD|Input|Abilities")
 	TObjectPtr<UInputAction> TertiaryAction;
 	
 	void Jump();

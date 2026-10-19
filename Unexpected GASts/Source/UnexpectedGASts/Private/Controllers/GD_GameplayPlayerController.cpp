@@ -1,7 +1,7 @@
 ﻿// Copyright Daniel Göndös 2026
 
 
-#include "Framework/GD_PlayerController.h"
+#include "Controllers/GD_GameplayPlayerController.h"
 
 #include "AbilitySystemBlueprintLibrary.h"
 #include "AbilitySystemComponent.h"
@@ -13,7 +13,7 @@
 
 class UEnhancedInputLocalPlayerSubsystem;
 
-void AGD_PlayerController::SetupInputComponent()
+void AGD_GameplayPlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
 
@@ -38,7 +38,7 @@ void AGD_PlayerController::SetupInputComponent()
 	EnhancedInputComponent->BindAction(TertiaryAction, ETriggerEvent::Triggered, this, &ThisClass::Tertiary);
 }
 
-void AGD_PlayerController::Jump()
+void AGD_GameplayPlayerController::Jump()
 {
 	if (!IsValid(GetCharacter())) return;
 	if (!IsAlive()) return;
@@ -46,7 +46,7 @@ void AGD_PlayerController::Jump()
 	GetCharacter()->Jump();
 }
 
-void AGD_PlayerController::StopJumping()
+void AGD_GameplayPlayerController::StopJumping()
 {
 	if (!IsValid(GetCharacter())) return;
 	if (!IsAlive()) return;
@@ -54,7 +54,7 @@ void AGD_PlayerController::StopJumping()
 	GetCharacter()->StopJumping();
 }
 
-void AGD_PlayerController::Move(const FInputActionValue& Value)
+void AGD_GameplayPlayerController::Move(const FInputActionValue& Value)
 {
 	if (!IsValid(GetPawn())) return;
 	if (!IsAlive()) return;
@@ -71,7 +71,7 @@ void AGD_PlayerController::Move(const FInputActionValue& Value)
 
 }
 
-void AGD_PlayerController::Look(const FInputActionValue& Value)
+void AGD_GameplayPlayerController::Look(const FInputActionValue& Value)
 {
 	if (!IsValid(GetPawn())) return;
 	if (!IsAlive()) return;
@@ -82,22 +82,22 @@ void AGD_PlayerController::Look(const FInputActionValue& Value)
 	AddPitchInput(LookAxisVector.Y);
 }
 
-void AGD_PlayerController::Primary()
+void AGD_GameplayPlayerController::Primary()
 {
 	//ActivateAbility(GASTags::GASAbilities::Primary);
 }
 
-void AGD_PlayerController::Secondary()
+void AGD_GameplayPlayerController::Secondary()
 {
 	//ActivateAbility(GASTags::GASAbilities::Secondary);
 }
 
-void AGD_PlayerController::Tertiary()
+void AGD_GameplayPlayerController::Tertiary()
 {
 	//ActivateAbility(GASTags::GASAbilities::Tertiary);
 }
 
-void AGD_PlayerController::ActivateAbility(const FGameplayTag& AbilityTag) const
+void AGD_GameplayPlayerController::ActivateAbility(const FGameplayTag& AbilityTag) const
 {
 	if (!IsAlive()) return;
 	UAbilitySystemComponent* ASC = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(GetPawn());
@@ -106,7 +106,7 @@ void AGD_PlayerController::ActivateAbility(const FGameplayTag& AbilityTag) const
 	ASC->TryActivateAbilitiesByTag(AbilityTag.GetSingleTagContainer());
 }
 
-bool AGD_PlayerController::IsAlive() const
+bool AGD_GameplayPlayerController::IsAlive() const
 {
 	 const AGD_BaseCharacter* BaseCharacter = Cast<AGD_BaseCharacter>(GetPawn());
 	if (!BaseCharacter) return false;
