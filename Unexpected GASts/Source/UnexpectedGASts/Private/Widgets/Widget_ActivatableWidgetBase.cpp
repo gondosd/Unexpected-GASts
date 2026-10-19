@@ -2,13 +2,13 @@
 
 
 #include "Widgets/Widget_ActivatableWidgetBase.h"
-#include "Controllers/FrontendPlayerController.h"
+#include "Controllers/GD_FrontendPlayerController.h"
 
-AFrontendPlayerController* UWidget_ActivatableWidgetBase::GetOwningFrontendPlayerController()
+AGD_FrontendPlayerController* UWidget_ActivatableWidgetBase::GetOwningFrontendPlayerController()
 {
 	if (!CachedOwningFrontendPC.IsValid())
 	{
-		CachedOwningFrontendPC = GetOwningPlayer<AFrontendPlayerController>();
+		CachedOwningFrontendPC = GetOwningPlayer<AGD_FrontendPlayerController>();
 	}
 
 	return CachedOwningFrontendPC.IsValid() ? CachedOwningFrontendPC.Get() : nullptr;

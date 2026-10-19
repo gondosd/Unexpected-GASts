@@ -1,12 +1,12 @@
 // Gondos Daniel all rights reserved.
 
 
-#include "Controllers/FrontendPlayerController.h"
+#include "Controllers/GD_FrontendPlayerController.h"
 #include "Kismet/GameplayStatics.h"
 #include "Camera/CameraActor.h"
 #include "FrontendSettings/FrontendGameUserSettings.h"
 
-void AFrontendPlayerController::OnPossess(APawn* aPawn)
+void AGD_FrontendPlayerController::OnPossess(APawn* aPawn)
 {
 	Super::OnPossess(aPawn);
 

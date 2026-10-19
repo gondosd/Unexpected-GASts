@@ -7,10 +7,8 @@
 #include "Widget_ActivatableWidgetBase.generated.h"
 
 
-class AFrontendPlayerController;
-/**
- * 
- */
+class AGD_FrontendPlayerController;
+
 UCLASS(Abstract, BlueprintType, meta = (DisableNativeTick))
 class UNEXPECTEDGASTS_API UWidget_ActivatableWidgetBase : public UCommonActivatableWidget
 {
@@ -18,8 +16,8 @@ class UNEXPECTEDGASTS_API UWidget_ActivatableWidgetBase : public UCommonActivata
 
 protected:
 	UFUNCTION(BlueprintPure)
-	AFrontendPlayerController* GetOwningFrontendPlayerController();
+	AGD_FrontendPlayerController* GetOwningFrontendPlayerController();
 
 private:
-	TWeakObjectPtr<AFrontendPlayerController> CachedOwningFrontendPC;
+	TWeakObjectPtr<AGD_FrontendPlayerController> CachedOwningFrontendPC;
 };

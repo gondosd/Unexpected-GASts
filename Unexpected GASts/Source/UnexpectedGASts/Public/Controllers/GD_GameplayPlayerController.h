@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/PlayerController.h"
+#include "GD_PlayerControllerBase.h"
 #include "GD_GameplayPlayerController.generated.h"
 
 
@@ -13,7 +13,7 @@ class UInputAction;
 struct FInputActionValue;
 
 UCLASS(Abstract)
-class UNEXPECTEDGASTS_API AGD_GameplayPlayerController : public APlayerController
+class UNEXPECTEDGASTS_API AGD_GameplayPlayerController : public AGD_PlayerControllerBase
 {
 	GENERATED_BODY()
 

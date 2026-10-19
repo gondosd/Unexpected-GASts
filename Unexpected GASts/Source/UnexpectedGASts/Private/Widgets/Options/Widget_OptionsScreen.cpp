@@ -3,12 +3,9 @@
 
 #include "Widgets/Options/Widget_OptionsScreen.h"
 
-#include "EnhancedInputComponent.h"
 #include "ICommonInputModule.h"
 #include "Input/CommonUIInputTypes.h"
-
 #include "FrontendDebugHelper.h"
-#include "Controllers/FrontendPlayerController.h"
 #include "FrontendSettings/FrontendGameUserSettings.h"
 #include "Subsystems/FrontendUISubsystem.h"
 #include "Widgets/Widget_ConfirmScreen.h"

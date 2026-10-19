@@ -3,14 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/PlayerController.h"
-#include "FrontendPlayerController.generated.h"
+#include "GD_PlayerControllerBase.h"
+#include "GD_FrontendPlayerController.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class UNEXPECTEDGASTS_API AFrontendPlayerController : public APlayerController
+class UNEXPECTEDGASTS_API AGD_FrontendPlayerController : public AGD_PlayerControllerBase
 {
 	GENERATED_BODY()
 
