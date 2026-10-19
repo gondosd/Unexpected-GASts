@@ -16,14 +16,6 @@ class UEnhancedInputLocalPlayerSubsystem;
 void AGD_GameplayPlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
-
-	UEnhancedInputLocalPlayerSubsystem* InputSubsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer());
-	if (!IsValid(InputSubsystem)) return;
-
-	for (TObjectPtr<UInputMappingContext> Context : InputMappingContexts)
-	{
-		InputSubsystem->AddMappingContext(Context, 0);
-	}
 	
 	UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(InputComponent);
 	if (!IsValid(EnhancedInputComponent)) return;

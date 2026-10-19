@@ -22,9 +22,6 @@ protected:
 
 private:
 	
-	UPROPERTY(EditDefaultsOnly, Category = "GD|Input")
-	TArray<TObjectPtr<UInputMappingContext>> InputMappingContexts;
-	
 	UPROPERTY(EditDefaultsOnly, Category = "GD|Input|Movement")
 	TObjectPtr<UInputAction> JumpAction;
 	
