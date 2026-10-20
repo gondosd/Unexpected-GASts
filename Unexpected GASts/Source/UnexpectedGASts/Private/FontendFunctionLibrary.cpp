@@ -3,6 +3,15 @@
 
 #include "FontendFunctionLibrary.h"
 #include "FrontendSettings/FrontendDeveloperSettings.h"
+#include "Widgets/Widget_PrimaryLayout.h"
+
+TSoftClassPtr<UWidget_PrimaryLayout> UFontendFunctionLibrary::GetPrimaryLayoutWidgetClass()
+{
+	const UFrontendDeveloperSettings* FrontendDeveloperSettings = GetDefault<UFrontendDeveloperSettings>();
+	checkf(FrontendDeveloperSettings->PrimaryLayoutWidgetClass, TEXT("Cound not find the PrimaryLayoutWidgetClass"));
+
+	return FrontendDeveloperSettings->PrimaryLayoutWidgetClass;
+}
 
 TSoftClassPtr<UWidget_ActivatableWidgetBase> UFontendFunctionLibrary::GetFrontendSoftWidgetClassByTag(
 	UPARAM(meta = (Categories = "Frontend.Widget")) FGameplayTag InWidgetTag)

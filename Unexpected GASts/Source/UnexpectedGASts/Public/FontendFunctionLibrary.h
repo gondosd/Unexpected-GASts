@@ -8,6 +8,7 @@
 #include "FontendFunctionLibrary.generated.h"
 
 
+class UWidget_PrimaryLayout;
 class UWidget_ActivatableWidgetBase;
 
 
@@ -19,6 +20,9 @@ class UNEXPECTEDGASTS_API UFontendFunctionLibrary : public UBlueprintFunctionLib
 
 public:
 
+	UFUNCTION(BlueprintPure, Category = "Frontend Function Library")
+	static TSoftClassPtr<UWidget_PrimaryLayout> GetPrimaryLayoutWidgetClass();
+	
 	UFUNCTION(BlueprintPure, Category = "Frontend Function Library")
 	static TSoftClassPtr<UWidget_ActivatableWidgetBase> GetFrontendSoftWidgetClassByTag(UPARAM(meta = (Categories = "Frontend.Widget")) FGameplayTag InWidgetTag);
 	

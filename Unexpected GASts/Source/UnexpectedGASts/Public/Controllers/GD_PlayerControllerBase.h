@@ -8,6 +8,7 @@
 #include "GD_PlayerControllerBase.generated.h"
 
 
+class UWidget_ActivatableWidgetBase;
 class UInputMappingContext;
 
 UCLASS(Abstract)
@@ -19,6 +20,9 @@ public:
 	virtual void OnLoadingScreenDeactivated_Implementation() override;
 
 private:
+	
+	
+	TSoftClassPtr<UWidget_ActivatableWidgetBase> PrimaryLayoutWidgetClass;
 	
 	UPROPERTY(EditDefaultsOnly, Category = "GD|Input")
 	TArray<TObjectPtr<UInputMappingContext>> InputMappingContextsToRegister;

@@ -7,6 +7,7 @@
 #include "GameplayTagContainer.h"
 #include "FrontendDeveloperSettings.generated.h"
 
+class UWidget_PrimaryLayout;
 class UWidget_ActivatableWidgetBase;
 /**
  * 
@@ -17,6 +18,9 @@ class UNEXPECTEDGASTS_API UFrontendDeveloperSettings : public UDeveloperSettings
 	GENERATED_BODY()
 
 public:
+	UPROPERTY(Config, EditAnywhere, Category = "Widget Reference")
+	TSoftClassPtr<UWidget_PrimaryLayout> PrimaryLayoutWidgetClass;
+	
 	UPROPERTY(Config, EditAnywhere, Category = "Widget Reference", meta = (ForceInlineRow, Categories = "Frontend.Widget"))
 	TMap<FGameplayTag, TSoftClassPtr<UWidget_ActivatableWidgetBase>> FrontendWidgetMap;
 	
