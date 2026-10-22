@@ -9,25 +9,23 @@
 void UGD_AttributeWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
+	checkf(AttributeMap.Value.IsValid() && AttributeMap.MaxValue.IsValid(), TEXT("AttributePair is not set"));
 	
 	//TEMP!!!!
 	GAS_Character = Cast<AGD_BaseCharacter>(GetOwningPlayerPawn());
-	
-	
-	for (const TTuple<FGameplayAttribute, FGameplayAttribute>& AttributePair : AttributeMap)
-	{
-		const AGD_BaseCharacter* Character = GAS_Character.Get();
-		const float AttributeValue = AttributePair.Key.GetNumericValue(Character->GetAttributeSet());
-		const float MaxAttributeValue = AttributePair.Value.GetNumericValue(Character->GetAttributeSet());
-		
-		BP_OnAttributeChange(AttributeValue, MaxAttributeValue, 0); //Init values
-		
-		BindAttributeChanges(Character, AttributeValue, MaxAttributeValue,AttributePair.Key); //Watch Attribute Value
-		BindAttributeChanges(Character, AttributeValue, MaxAttributeValue,AttributePair.Value); //Watch MaxAttribute Value
-	}
+
+	const AGD_BaseCharacter* Character = GAS_Character.Get();
+	const float AttributeValue = AttributeMap.Value.GetNumericValue(Character->GetAttributeSet());
+	const float MaxAttributeValue = AttributeMap.MaxValue.GetNumericValue(Character->GetAttributeSet());
+
+	BP_OnAttributeChange(AttributeValue, MaxAttributeValue, 0); //Init values
+
+	BindAttributeChanges(Character, AttributeValue, MaxAttributeValue, AttributeMap.Value);
+	BindAttributeChanges(Character, AttributeValue, MaxAttributeValue, AttributeMap.MaxValue);
 }
 
-void UGD_AttributeWidget::BindAttributeChanges(const AGD_BaseCharacter* Character, const float AttributeValue, const float MaxAttributeValue, const FGameplayAttribute& Attribute)
+void UGD_AttributeWidget::BindAttributeChanges(const AGD_BaseCharacter* Character, const float AttributeValue, const float MaxAttributeValue,
+                                               const FGameplayAttribute& Attribute)
 {
 	Character->GetAbilitySystemComponent()->GetGameplayAttributeValueChangeDelegate(Attribute).AddLambda(
 		[this , AttributeValue, MaxAttributeValue](const FOnAttributeChangeData& AttributeChangeData)
