@@ -8,7 +8,7 @@
 TSoftClassPtr<UWidget_PrimaryLayout> UFontendFunctionLibrary::GetPrimaryLayoutWidgetClass()
 {
 	const UFrontendDeveloperSettings* FrontendDeveloperSettings = GetDefault<UFrontendDeveloperSettings>();
-	checkf(FrontendDeveloperSettings->PrimaryLayoutWidgetClass, TEXT("Cound not find the PrimaryLayoutWidgetClass"));
+	checkf(!FrontendDeveloperSettings->PrimaryLayoutWidgetClass.IsNull(), TEXT("Cound not find the PrimaryLayoutWidgetClass"));
 
 	return FrontendDeveloperSettings->PrimaryLayoutWidgetClass;
 }
