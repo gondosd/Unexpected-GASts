@@ -33,9 +33,15 @@ protected:
 
 	UFUNCTION(BlueprintImplementableEvent, meta = (DisplayName = "On Attribute Change"))
 	void BP_OnAttributeChange(float NewValue, float NewMaxValue, float OldValue);
+	
+	bool IsASCInitialized() const;
 
 private:
-	void BindAttributeChanges(const AGD_BaseCharacter* Character, float AttributeValue, float MaxAttributeValue, const FGameplayAttribute& Attribute);
+	UFUNCTION()
+	void InitializeWidget(UAbilitySystemComponent* ASC, UAttributeSet* AS);
+	
+	void BindAttributeChanges(UAbilitySystemComponent* ASC, const FGameplayAttribute& Attribute);
+	void AttributePairChanged(float OldValue = 0.f);
 	
 	TWeakObjectPtr<AGD_BaseCharacter> GAS_Character; //We can get the attributes from it, what to follow
 		

@@ -11,25 +11,41 @@ void UGD_AttributeWidget::NativeConstruct()
 	Super::NativeConstruct();
 	checkf(AttributeMap.Value.IsValid() && AttributeMap.MaxValue.IsValid(), TEXT("AttributePair is not set"));
 	
-	//TEMP!!!!
-	GAS_Character = Cast<AGD_BaseCharacter>(GetOwningPlayerPawn());
+	//If there is no other Character given, the Local Player Character is the fallback
+	if (!GAS_Character.IsValid())
+		GAS_Character = Cast<AGD_BaseCharacter>(GetOwningPlayerPawn());
 
-	const AGD_BaseCharacter* Character = GAS_Character.Get();
-	const float AttributeValue = AttributeMap.Value.GetNumericValue(Character->GetAttributeSet());
-	const float MaxAttributeValue = AttributeMap.MaxValue.GetNumericValue(Character->GetAttributeSet());
-
-	BP_OnAttributeChange(AttributeValue, MaxAttributeValue, 0); //Init values
-
-	BindAttributeChanges(Character, AttributeValue, MaxAttributeValue, AttributeMap.Value);
-	BindAttributeChanges(Character, AttributeValue, MaxAttributeValue, AttributeMap.MaxValue);
+	if (IsASCInitialized())
+		InitializeWidget(GAS_Character.Get()->GetAbilitySystemComponent(), GAS_Character.Get()->GetAttributeSet());
+	else
+		GAS_Character->OnASCInitialized.AddDynamic(this, &ThisClass::InitializeWidget);
 }
 
-void UGD_AttributeWidget::BindAttributeChanges(const AGD_BaseCharacter* Character, const float AttributeValue, const float MaxAttributeValue,
-                                               const FGameplayAttribute& Attribute)
+void UGD_AttributeWidget::InitializeWidget(UAbilitySystemComponent* ASC, UAttributeSet* AS)
 {
-	Character->GetAbilitySystemComponent()->GetGameplayAttributeValueChangeDelegate(Attribute).AddLambda(
-		[this , AttributeValue, MaxAttributeValue](const FOnAttributeChangeData& AttributeChangeData)
+	AttributePairChanged(); //Init
+
+	BindAttributeChanges(ASC, AttributeMap.Value);
+	BindAttributeChanges(ASC, AttributeMap.MaxValue);
+}
+
+void UGD_AttributeWidget::BindAttributeChanges(UAbilitySystemComponent* ASC, const FGameplayAttribute& Attribute)
+{
+	ASC->GetGameplayAttributeValueChangeDelegate(Attribute).AddLambda(
+		[this ](const FOnAttributeChangeData& AttributeChangeData)
 		{
-			BP_OnAttributeChange(AttributeValue, MaxAttributeValue, AttributeChangeData.OldValue);
+			AttributePairChanged(AttributeChangeData.OldValue);
 		});
+}
+
+void UGD_AttributeWidget::AttributePairChanged(const float OldValue)
+{
+	const float InitAttributeValue = AttributeMap.Value.GetNumericValue(GAS_Character.Get()->GetAttributeSet());
+	const float InitMaxAttributeValue = AttributeMap.MaxValue.GetNumericValue(GAS_Character.Get()->GetAttributeSet());
+	BP_OnAttributeChange(InitAttributeValue, InitMaxAttributeValue, OldValue);
+}
+
+bool UGD_AttributeWidget::IsASCInitialized() const
+{
+	return GAS_Character.Get()->GetAbilitySystemComponent() && GAS_Character.Get()->GetAttributeSet();
 }
