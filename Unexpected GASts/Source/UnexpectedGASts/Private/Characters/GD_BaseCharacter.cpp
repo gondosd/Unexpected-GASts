@@ -4,6 +4,7 @@
 #include "Characters/GD_BaseCharacter.h"
 
 #include "AbilitySystemComponent.h"
+#include "Characters/Components/GD_CharacterWidgetComponent.h"
 #include "Net/UnrealNetwork.h"
 
 namespace GASActorTags
@@ -17,6 +18,12 @@ AGD_BaseCharacter::AGD_BaseCharacter()
 	
 	//Tick and refresh bone transforms whether rendered or not - for bone uptades on a dedicated server
 	GetMesh()->VisibilityBasedAnimTickOption = EVisibilityBasedAnimTickOption::AlwaysTickPoseAndRefreshBones;
+	
+	AttributeWidget = CreateDefaultSubobject<UGD_CharacterWidgetComponent>("AttributeWidget");
+	AttributeWidget->SetupAttachment(GetRootComponent());
+	AttributeWidget->SetWidgetSpace(EWidgetSpace::Screen);
+	AttributeWidget->SetDrawSize(FVector2D(100.0f, 10.0f));
+	AttributeWidget->SetRelativeLocation(FVector(0.0f, 0.0f, 100.0f));
 }
 
 void AGD_BaseCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const

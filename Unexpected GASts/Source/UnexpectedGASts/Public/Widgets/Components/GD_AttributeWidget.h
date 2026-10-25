@@ -43,8 +43,11 @@ private:
 	void BindAttributeChanges(UAbilitySystemComponent* ASC, const FGameplayAttribute& Attribute);
 	void AttributePairChanged(float OldValue = 0.f);
 	
+public:
+	//TODO: make a setter for this, that cleans up the binginds and retriggers the init-flow
 	TWeakObjectPtr<AGD_BaseCharacter> GAS_Character; //We can get the attributes from it, what to follow
 		
+private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "GAS|Attributes", meta =(AllowPrivateAccess = true))
 	FGD_AttributePair AttributeMap; //Value, MaxValue
 };

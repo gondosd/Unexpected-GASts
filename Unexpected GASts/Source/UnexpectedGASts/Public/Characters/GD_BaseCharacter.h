@@ -7,6 +7,8 @@
 #include "GameFramework/Character.h"
 #include "GD_BaseCharacter.generated.h"
 
+class UGD_CharacterWidgetComponent;
+
 namespace GASActorTags
 {
 	extern UNEXPECTEDGASTS_API const FName Player;
@@ -65,6 +67,9 @@ protected:
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "GAS|Abilities")
 	TArray<TSubclassOf<UGameplayAbility>> Abilities;
+	
+	UPROPERTY(VisibleAnywhere, Category = "GAS|Attributes")
+	TObjectPtr<UGD_CharacterWidgetComponent> AttributeWidget;
 	
 	//TODO: remove this, because i want GameplayTags to use for this
 	UPROPERTY(BlueprintReadOnly, meta = (AllowPrivateAccess = true), Replicated)
