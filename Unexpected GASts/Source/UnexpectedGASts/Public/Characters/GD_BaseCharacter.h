@@ -28,6 +28,7 @@ class UNEXPECTEDGASTS_API AGD_BaseCharacter : public ACharacter, public IAbility
 
 public:
 	AGD_BaseCharacter();
+	virtual void NotifyControllerChanged() override;
 
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 

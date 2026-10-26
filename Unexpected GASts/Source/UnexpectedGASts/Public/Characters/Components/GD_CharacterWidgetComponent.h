@@ -14,6 +14,6 @@ class UNEXPECTEDGASTS_API UGD_CharacterWidgetComponent : public UWidgetComponent
 
 public:
 	UGD_CharacterWidgetComponent();
-
+	
 	virtual void InitWidget() override;
 };

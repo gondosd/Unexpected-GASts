@@ -26,6 +26,15 @@ AGD_BaseCharacter::AGD_BaseCharacter()
 	AttributeWidget->SetRelativeLocation(FVector(0.0f, 0.0f, 100.0f));
 }
 
+void AGD_BaseCharacter::NotifyControllerChanged()
+{
+	Super::NotifyControllerChanged();
+	
+	if (AttributeWidget && Controller && Controller->IsLocalPlayerController())
+		AttributeWidget->DestroyComponent();
+		
+}
+
 void AGD_BaseCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
