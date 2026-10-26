@@ -30,9 +30,11 @@ void AGD_BaseCharacter::NotifyControllerChanged()
 {
 	Super::NotifyControllerChanged();
 	
-	if (AttributeWidget && Controller && Controller->IsLocalPlayerController())
-		AttributeWidget->DestroyComponent();
-		
+	if (AttributeWidget)
+	{
+		const bool bIsLocalPlayer = Controller && Controller->IsLocalPlayerController();
+		AttributeWidget->SetVisibility(!bIsLocalPlayer);
+	}
 }
 
 void AGD_BaseCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
