@@ -31,6 +31,9 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "GD|Input|Movement")
 	TObjectPtr<UInputAction> LookAction;
 	
+	UPROPERTY(EditDefaultsOnly, Category = "GD|Input|Movement")
+	TObjectPtr<UInputAction> OpenMenuAction;
+	
 	UPROPERTY(EditDefaultsOnly, Category = "GD|Input|Abilities")
 	TObjectPtr<UInputAction> PrimaryAction;
 	
@@ -44,6 +47,7 @@ private:
 	void StopJumping();
 	void Move(const FInputActionValue& Value);
 	void Look(const FInputActionValue& Value);
+	void ToggleMenu();
 	void Primary();
 	void Secondary();
 	void Tertiary();

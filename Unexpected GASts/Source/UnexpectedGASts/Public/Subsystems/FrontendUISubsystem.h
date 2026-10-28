@@ -38,6 +38,13 @@ public:
 	void PushSoftWidgetToStackAsync(const FGameplayTag& InWidgetStackTag, TSoftClassPtr<UWidget_ActivatableWidgetBase> InSoftWidgetClass, TFunction<void(EAsyncPushWidgetState, UWidget_ActivatableWidgetBase*)> AsyncPushStateCallback);
 	void PushConfirmScreenToModalStackAsynch(EConfirmScreenType InScreenType, const FText& InScreenTitle, const FText& InScreenMsg, TFunction<void(EConfirmScreenButtonType)> ButtonClickedCallback);
 	
+	UFUNCTION(BlueprintCallable)
+	void ClearEntireWidgetStackByTag(UPARAM(meta = (Categories = "Frontend.WidgetStack")) const FGameplayTag InTag) const;
+
+	UFUNCTION(BlueprintPure)
+	bool CheckWidgetStackIfEmptyByTag(UPARAM(meta = (Categories = "Frontend.WidgetStack")) const FGameplayTag InTag) const;
+	
+	
 	UPROPERTY(BlueprintAssignable)
 	FOnButtonDescriptionTextUpdatedDelegate OnButtonDescriptionTextUpdatedDelegate;
 	

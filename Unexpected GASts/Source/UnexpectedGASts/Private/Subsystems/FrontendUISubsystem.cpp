@@ -120,3 +120,20 @@ void UFrontendUISubsystem::PushConfirmScreenToModalStackAsynch(EConfirmScreenTyp
 			}
 		});
 }
+
+void UFrontendUISubsystem::ClearEntireWidgetStackByTag(const FGameplayTag InTag) const
+{
+	if (UCommonActivatableWidgetContainerBase* FoundStack = CreatedPrimaryLayout->FindWidgetStackByTag(InTag))
+	{
+		FoundStack->ClearWidgets();
+	}
+}
+
+bool UFrontendUISubsystem::CheckWidgetStackIfEmptyByTag(const FGameplayTag InTag) const
+{
+	if (const UCommonActivatableWidgetContainerBase* FoundStack = CreatedPrimaryLayout->FindWidgetStackByTag(InTag))
+	{
+		return FoundStack->GetNumWidgets() > 0;
+	}
+	return false;
+}

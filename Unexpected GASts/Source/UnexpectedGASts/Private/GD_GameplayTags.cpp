@@ -24,6 +24,9 @@ namespace FrontendGameplayTags
 
 		UE_DEFINE_GAMEPLAY_TAG(Frontend_Widget_ConfirmScreen, "Frontend.Widget.ConfirmScreen");
 		UE_DEFINE_GAMEPLAY_TAG(Frontend_Widget_KeyRemapScreen, "Frontend.Widget.KeyRemapScreen");
+		
+		//In-game Widgets
+		UE_DEFINE_GAMEPLAY_TAG(Game_Widget_MenuScreen, "Frontend.Widget.GameMenuScreen");
 	}
 
 	namespace Images

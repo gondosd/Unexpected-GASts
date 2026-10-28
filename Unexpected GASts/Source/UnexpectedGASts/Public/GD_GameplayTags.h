@@ -24,6 +24,9 @@ namespace FrontendGameplayTags
 
 		UNEXPECTEDGASTS_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Frontend_Widget_ConfirmScreen);
 		UNEXPECTEDGASTS_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Frontend_Widget_KeyRemapScreen);
+		
+		//In-game Widgets
+		UNEXPECTEDGASTS_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Game_Widget_MenuScreen);
 	}
 
 	namespace Images

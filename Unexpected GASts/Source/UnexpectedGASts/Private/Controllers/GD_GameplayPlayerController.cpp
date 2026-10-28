@@ -7,9 +7,13 @@
 #include "AbilitySystemComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "FontendFunctionLibrary.h"
 #include "GD_GameplayTags.h"
 #include "Characters/GD_BaseCharacter.h"
 #include "GameFramework/Character.h"
+#include "Subsystems/FrontendAudioSubsystem.h"
+#include "Subsystems/FrontendUISubsystem.h"
+#include "Widgets/Widget_ActivatableWidgetBase.h"
 
 class UEnhancedInputLocalPlayerSubsystem;
 
@@ -24,6 +28,7 @@ void AGD_GameplayPlayerController::SetupInputComponent()
 	EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ThisClass::StopJumping);
 	EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ThisClass::Move);
 	EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ThisClass::Look);
+	EnhancedInputComponent->BindAction(OpenMenuAction, ETriggerEvent::Triggered, this, &ThisClass::ToggleMenu);
 	
 	EnhancedInputComponent->BindAction(PrimaryAction, ETriggerEvent::Triggered, this, &ThisClass::Primary);
 	EnhancedInputComponent->BindAction(SecondaryAction, ETriggerEvent::Triggered, this, &ThisClass::Secondary);
@@ -72,6 +77,37 @@ void AGD_GameplayPlayerController::Look(const FInputActionValue& Value)
 	
 	AddYawInput(LookAxisVector.X);
 	AddPitchInput(LookAxisVector.Y);
+}
+
+void AGD_GameplayPlayerController::ToggleMenu()
+{
+	if (UFrontendUISubsystem* FrontendUISubsystem = UFrontendUISubsystem::Get(this))
+	{
+		if (FrontendUISubsystem->CheckWidgetStackIfEmptyByTag(FrontendGameplayTags::Stacks::Frontend_WidgetStack_GameMenu))
+		{
+			FrontendUISubsystem->ClearEntireWidgetStackByTag(FrontendGameplayTags::Stacks::Frontend_WidgetStack_GameMenu);
+			//SetPause(false); //TODO think if multiplayer should be paused here
+			//UFrontendAudioSubsystem::Get(this)->PauseMusic(false);
+		}
+		else
+		{
+			TSoftClassPtr<UWidget_ActivatableWidgetBase> PauseMenuWidget = UFontendFunctionLibrary::GetFrontendSoftWidgetClassByTag(
+				FrontendGameplayTags::Widgets::Game_Widget_MenuScreen);
+			FrontendUISubsystem->PushSoftWidgetToStackAsync(FrontendGameplayTags::Stacks::Frontend_WidgetStack_GameMenu,
+															PauseMenuWidget,
+															[this](EAsyncPushWidgetState AsyncPushWidgetState,
+																   UWidget_ActivatableWidgetBase* Widget_ActivatableWidgetBase)
+															{
+																//TODO think if multiplayer should be paused here
+																
+																// Widget_ActivatableWidgetBase->OnWidgetClosed.AddUObject(
+																// 	this, &AGD_GameplayPlayerController::MenuPanelClosed);
+															}
+			);
+			//SetPause(true); //TODO think if multiplayer should be paused here
+			//UFrontendAudioSubsystem::Get(this)->PauseMusic(true);
+		}
+	}
 }
 
 void AGD_GameplayPlayerController::Primary()
