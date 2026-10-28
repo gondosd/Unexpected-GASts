@@ -29,8 +29,6 @@ public:
 	static void SetVolume(float InVolume, UObject* LoadedSoundClass);
 	
 private:
-	static UWorld* CachedWorld;
-	
 	static const UFrontendDeveloperSettings* CachedFrontendDeveloperSettings;
 
 	

@@ -10,7 +10,6 @@
 #include "Sound/SoundMix.h"
 
 //static variable initializations
-UWorld* UFrontendAudioSubsystem::CachedWorld = nullptr;
 const UFrontendDeveloperSettings* UFrontendAudioSubsystem::CachedFrontendDeveloperSettings = nullptr;
 
 UFrontendAudioSubsystem* UFrontendAudioSubsystem::Get(const UObject* WorldContextObject)
@@ -62,36 +61,30 @@ void UFrontendAudioSubsystem::SetVolume(float InVolume, UObject* LoadedSoundClas
 {
 	if (!CachedFrontendDeveloperSettings)
 		CachedFrontendDeveloperSettings = GetDefault<UFrontendDeveloperSettings>();
-
-	if (GEngine && !CachedWorld)
-		CachedWorld = GEngine->GetCurrentPlayWorld();
-
-	check(CachedWorld);
 	check(CachedFrontendDeveloperSettings);
-
-
-	USoundClass* MusicSoundClass = nullptr;
-	if (LoadedSoundClass)
-	{
-		MusicSoundClass = CastChecked<USoundClass>(LoadedSoundClass);
-	}
-
+	
+	UWorld* World = GEngine ? GEngine->GetCurrentPlayWorld() : nullptr;
+	if (!World) return;
+	
+	USoundClass* MusicSoundClass = Cast<USoundClass>(LoadedSoundClass);
+	
 	USoundMix* DefaultSoundMix = nullptr;
 	if (UObject* LoadedObject = CachedFrontendDeveloperSettings->DefaultSoundMix.TryLoad())
-	{
-		DefaultSoundMix = CastChecked<USoundMix>(LoadedObject);
-	}
-
+		DefaultSoundMix = Cast<USoundMix>(LoadedObject);
+	
+	
+	if (!DefaultSoundMix || !MusicSoundClass) return;
+	
 	UGameplayStatics::SetSoundMixClassOverride(
-		CachedWorld,
+		World,
 		DefaultSoundMix,
 		MusicSoundClass,
 		InVolume,
 		1.f,
 		0.f
 	);
-
-	UGameplayStatics::PushSoundMixModifier(CachedWorld, DefaultSoundMix);
+	
+	UGameplayStatics::PushSoundMixModifier(World, DefaultSoundMix);
 }
 
 void UFrontendAudioSubsystem::Deinitialize()
@@ -99,6 +92,5 @@ void UFrontendAudioSubsystem::Deinitialize()
 	Super::Deinitialize();
 	
 	//Clear out unused raw pointers
-	CachedWorld = nullptr;
 	CachedFrontendDeveloperSettings = nullptr;
 }
