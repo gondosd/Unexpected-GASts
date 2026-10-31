@@ -282,6 +282,22 @@ void UFrontendLoadingScreenSubsystem::NotifyLoadingScreenVisibilityChanged(bool 
 				}
 			}
 			
+			if(UGameInstance* GI = GetGameInstance())
+			{
+				if (GI->Implements<UFrontendLoadingScreenInterface>())
+				{
+					if (bIsVisible)
+					{
+						IFrontendLoadingScreenInterface::Execute_OnLoadingScreenActivated(GI);
+					}
+					else
+					{
+						IFrontendLoadingScreenInterface::Execute_OnLoadingScreenDeactivated(GI);
+					}
+				}
+			}
+		
+			
 			//The code for notifying other objects in the world goes here
 		}
 	}

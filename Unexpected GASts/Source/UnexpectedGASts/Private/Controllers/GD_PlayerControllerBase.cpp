@@ -6,6 +6,8 @@
 #include "EnhancedInputSubsystems.h"
 #include "FontendFunctionLibrary.h"
 #include "GD_GameplayTags.h"
+#include "OnlineSubsystem.h"
+#include "Interfaces/OnlineSessionInterface.h"
 #include "Subsystems/FrontendUISubsystem.h"
 #include "UserSettings/EnhancedInputUserSettings.h"
 #include "Widgets/Widget_PrimaryLayout.h"
