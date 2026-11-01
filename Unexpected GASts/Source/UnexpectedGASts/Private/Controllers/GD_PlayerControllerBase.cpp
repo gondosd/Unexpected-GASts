@@ -11,7 +11,7 @@
 #include "Subsystems/FrontendUISubsystem.h"
 #include "UserSettings/EnhancedInputUserSettings.h"
 #include "Widgets/Widget_PrimaryLayout.h"
-#include "Widgets/Credits/Widget_CreditsScreen.h"
+#include "Widgets/SimplePanels/Widget_CreditsScreen.h"
 
 void AGD_PlayerControllerBase::OnLoadingScreenDeactivated_Implementation()
 {

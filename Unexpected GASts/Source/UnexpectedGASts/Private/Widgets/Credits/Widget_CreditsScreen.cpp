@@ -1,7 +1,7 @@
 ﻿// Gondos Daniel all rights reserved.
 
 
-#include "Widgets/Credits/Widget_CreditsScreen.h"
+#include "Widgets/SimplePanels/Widget_CreditsScreen.h"
 
 #include "EnhancedActionKeyMapping.h"
 #include "EnhancedInputSubsystems.h"
