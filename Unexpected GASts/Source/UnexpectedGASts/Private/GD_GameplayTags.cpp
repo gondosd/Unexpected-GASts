@@ -38,12 +38,14 @@ namespace FrontendGameplayTags
 
 namespace GASTags
 {
-	namespace GASAbilities
+	namespace Abilities
 	{
-		//Primary
-		//Secondary
-		//Tertiary
-		//BaseAttack
+		UE_DEFINE_GAMEPLAY_TAG(PrimaryAttack, "GAS.Abilities.PrimaryAttack");
+		UE_DEFINE_GAMEPLAY_TAG(SecondaryAttack, "GAS.Abilities.SecondaryAttack");
+		UE_DEFINE_GAMEPLAY_TAG(TertiaryAttack, "GAS.Abilities.TertiaryAttack");
+		UE_DEFINE_GAMEPLAY_TAG(BaseAttack, "GAS.Abilities.BaseAttack");
+		UE_DEFINE_GAMEPLAY_TAG(Dash, "GAS.Abilities.Dash");
+		UE_DEFINE_GAMEPLAY_TAG(Emote, "GAS.Abilities.Emote");
 	}
 	
 	namespace SetByCaller

@@ -33,6 +33,8 @@ void AGD_GameplayPlayerController::SetupInputComponent()
 	EnhancedInputComponent->BindAction(PrimaryAction, ETriggerEvent::Triggered, this, &ThisClass::Primary);
 	EnhancedInputComponent->BindAction(SecondaryAction, ETriggerEvent::Triggered, this, &ThisClass::Secondary);
 	EnhancedInputComponent->BindAction(TertiaryAction, ETriggerEvent::Triggered, this, &ThisClass::Tertiary);
+	EnhancedInputComponent->BindAction(DashAction, ETriggerEvent::Triggered, this, &ThisClass::Dash);
+	EnhancedInputComponent->BindAction(EmoteAction, ETriggerEvent::Triggered, this, &ThisClass::Emote);
 }
 
 void AGD_GameplayPlayerController::Jump()
@@ -112,17 +114,27 @@ void AGD_GameplayPlayerController::ToggleMenu()
 
 void AGD_GameplayPlayerController::Primary()
 {
-	//ActivateAbility(GASTags::GASAbilities::Primary);
+	ActivateAbility(GASTags::Abilities::PrimaryAttack);
 }
 
 void AGD_GameplayPlayerController::Secondary()
 {
-	//ActivateAbility(GASTags::GASAbilities::Secondary);
+	ActivateAbility(GASTags::Abilities::SecondaryAttack);
 }
 
 void AGD_GameplayPlayerController::Tertiary()
 {
-	//ActivateAbility(GASTags::GASAbilities::Tertiary);
+	ActivateAbility(GASTags::Abilities::TertiaryAttack);
+}
+
+void AGD_GameplayPlayerController::Emote()
+{
+	ActivateAbility(GASTags::Abilities::Emote);
+}
+
+void AGD_GameplayPlayerController::Dash()
+{
+	ActivateAbility(GASTags::Abilities::Dash);
 }
 
 void AGD_GameplayPlayerController::ActivateAbility(const FGameplayTag& AbilityTag) const

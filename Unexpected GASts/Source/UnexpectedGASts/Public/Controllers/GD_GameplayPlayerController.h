@@ -43,6 +43,12 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "GD|Input|Abilities")
 	TObjectPtr<UInputAction> TertiaryAction;
 	
+	UPROPERTY(EditDefaultsOnly, Category = "GD|Input|Abilities")
+	TObjectPtr<UInputAction> DashAction;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "GD|Input|Abilities")
+	TObjectPtr<UInputAction> EmoteAction;
+	
 	void Jump();
 	void StopJumping();
 	void Move(const FInputActionValue& Value);
@@ -51,6 +57,8 @@ private:
 	void Primary();
 	void Secondary();
 	void Tertiary();
+	void Dash();
+	void Emote();
 	void ActivateAbility(const FGameplayTag& AbilityTag) const;
 	
 	bool IsAlive()const;
