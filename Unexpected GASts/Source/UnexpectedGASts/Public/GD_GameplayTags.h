@@ -53,8 +53,12 @@ namespace GASTags
 		//Projectile
 	}
 
-	namespace Event
+	namespace Events
 	{
+		namespace Attacks
+		{
+			UNEXPECTEDGASTS_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(PrimaryAttackNotify);
+		}
 		//Combat
 			//DamageTaken
 			//Healed

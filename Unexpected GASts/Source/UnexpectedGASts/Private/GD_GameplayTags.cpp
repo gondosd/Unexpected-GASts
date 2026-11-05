@@ -24,7 +24,7 @@ namespace FrontendGameplayTags
 
 		UE_DEFINE_GAMEPLAY_TAG(Frontend_Widget_ConfirmScreen, "Frontend.Widget.ConfirmScreen");
 		UE_DEFINE_GAMEPLAY_TAG(Frontend_Widget_KeyRemapScreen, "Frontend.Widget.KeyRemapScreen");
-		
+
 		//In-game Widgets
 		UE_DEFINE_GAMEPLAY_TAG(Game_Widget_MenuScreen, "Frontend.Widget.GameMenuScreen");
 	}
@@ -47,14 +47,19 @@ namespace GASTags
 		UE_DEFINE_GAMEPLAY_TAG(Dash, "GAS.Abilities.Dash");
 		UE_DEFINE_GAMEPLAY_TAG(Emote, "GAS.Abilities.Emote");
 	}
-	
+
 	namespace SetByCaller
 	{
 		//Projectile
 	}
 
-	namespace Event
+	namespace Events
 	{
+		namespace Attacks
+		{
+			UE_DEFINE_GAMEPLAY_TAG(PrimaryAttackNotify, "GAS.Events.Attacks.PrimaryAttackNotify");	
+		}
+
 		//Combat
 		//DamageTaken
 		//Healed
