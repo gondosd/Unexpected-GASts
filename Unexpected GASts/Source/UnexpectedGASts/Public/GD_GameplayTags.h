@@ -55,9 +55,9 @@ namespace GASTags
 
 	namespace Events
 	{
-		namespace Attacks
+		namespace Damage
 		{
-			UNEXPECTEDGASTS_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(PrimaryAttackNotify);
+			UNEXPECTEDGASTS_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(AttackNotify);
 		}
 		//Combat
 			//DamageTaken

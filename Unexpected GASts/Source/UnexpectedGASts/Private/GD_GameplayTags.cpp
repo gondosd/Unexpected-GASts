@@ -55,9 +55,9 @@ namespace GASTags
 
 	namespace Events
 	{
-		namespace Attacks
+		namespace Damage
 		{
-			UE_DEFINE_GAMEPLAY_TAG(PrimaryAttackNotify, "GAS.Events.Attacks.PrimaryAttackNotify");	
+			UE_DEFINE_GAMEPLAY_TAG(AttackNotify, "GAS.Events.Attacks.AttackNotify");	
 		}
 
 		//Combat
