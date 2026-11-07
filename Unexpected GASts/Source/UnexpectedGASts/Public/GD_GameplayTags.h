@@ -46,6 +46,7 @@ namespace GASTags
 		UNEXPECTEDGASTS_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(BaseAttack);
 		UNEXPECTEDGASTS_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Dash);
 		UNEXPECTEDGASTS_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Emote);
+		UNEXPECTEDGASTS_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Suicide);
 	}
 
 	namespace SetByCaller
@@ -67,9 +68,9 @@ namespace GASTags
 			//QuestCompleted
 	}
 
-	namespace State
+	namespace States
 	{
-		//Dead
+		UNEXPECTEDGASTS_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Dead);
 		//Stunned
 		//Invulnerable
 		//Airborne

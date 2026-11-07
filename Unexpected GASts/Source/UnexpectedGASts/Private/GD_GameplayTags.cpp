@@ -46,6 +46,7 @@ namespace GASTags
 		UE_DEFINE_GAMEPLAY_TAG(BaseAttack, "GAS.Abilities.BaseAttack");
 		UE_DEFINE_GAMEPLAY_TAG(Dash, "GAS.Abilities.Dash");
 		UE_DEFINE_GAMEPLAY_TAG(Emote, "GAS.Abilities.Emote");
+		UE_DEFINE_GAMEPLAY_TAG(Suicide, "GAS.Abilities.Suicide");
 	}
 
 	namespace SetByCaller
@@ -68,9 +69,9 @@ namespace GASTags
 		//QuestCompleted
 	}
 
-	namespace State
+	namespace States
 	{
-		//Dead
+		UE_DEFINE_GAMEPLAY_TAG(Dead, "GAS.States.Dead");	
 		//Stunned
 		//Invulnerable
 		//Airborne

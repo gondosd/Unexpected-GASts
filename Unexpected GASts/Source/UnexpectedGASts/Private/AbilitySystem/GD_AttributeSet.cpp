@@ -23,21 +23,27 @@ void UGD_AttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Out
 void UGD_AttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)
 {
 	Super::PostGameplayEffectExecute(Data);
-	
+
 	//Clamping... it feels weird to do it here, and like this. TODO: fix this somewhere else because its not working from the tutorial!
 	// if (Data.EvaluatedData.Attribute == GetHealthAttribute() && bAttributesInitialized)
 	// 	SetHealth(FMath::Clamp(GetHealth(), 0.f, GetMaxHealth()));
 	//
 	// if (Data.EvaluatedData.Attribute == GetManaAttribute() && bAttributesInitialized)
 	// 	SetMana(FMath::Clamp(GetMana(), 0.f, GetMaxMana()));
-	
+
 	if (Data.EvaluatedData.Attribute == GetHealthAttribute() && GetHealth() <= 0.f)
 	{
-		FGameplayEventData Payload;
-		Payload.Instigator = Data.Target.GetAvatarActor();
-		//TODO: implement this KillScored part
-		//UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(Data.EffectSpec.GetEffectContext().GetInstigator(), GASTags::Events::KillScored, Payload);
-	}	
+		UAbilitySystemComponent* ASC = &Data.Target;
+		if (!ASC->HasMatchingGameplayTag(GASTags::States::Dead))
+		{
+			ASC->AddLooseGameplayTag(GASTags::States::Dead, 1, EGameplayTagReplicationState::TagOnly);
+
+			FGameplayEventData Payload;
+			Payload.Instigator = Data.Target.GetAvatarActor();
+			//TODO: implement this KillScored part
+			//UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(Data.EffectSpec.GetEffectContext().GetInstigator(), GASTags::Events::KillScored, Payload);
+		}
+	}
 
 	if (!bAttributesInitialized)
 	{
