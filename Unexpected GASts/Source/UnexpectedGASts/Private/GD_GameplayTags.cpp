@@ -69,12 +69,20 @@ namespace GASTags
 		//QuestCompleted
 	}
 
+	namespace Status
+	{
+		UE_DEFINE_GAMEPLAY_TAG(Wet, "GAS.Status.Wet");	
+		UE_DEFINE_GAMEPLAY_TAG(Burning, "GAS.Status.Burning");	
+		UE_DEFINE_GAMEPLAY_TAG(Chilled, "GAS.Status.Chilled");	
+		UE_DEFINE_GAMEPLAY_TAG(Frozen, "GAS.Status.Frozen");	
+	}
+	
 	namespace States
 	{
 		UE_DEFINE_GAMEPLAY_TAG(Dead, "GAS.States.Dead");	
-		//Stunned
-		//Invulnerable
-		//Airborne
+		UE_DEFINE_GAMEPLAY_TAG(Stunned, "GAS.States.Stunned");	
+		UE_DEFINE_GAMEPLAY_TAG(Invulnerable, "GAS.States.Invulnerable");	
+		//Airborne?
 	}
 
 	namespace Cooldown
