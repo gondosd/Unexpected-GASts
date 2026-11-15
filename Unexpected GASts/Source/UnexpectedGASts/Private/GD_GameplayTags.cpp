@@ -47,6 +47,7 @@ namespace GASTags
 		UE_DEFINE_GAMEPLAY_TAG(Dash, "GAS.Abilities.Dash");
 		UE_DEFINE_GAMEPLAY_TAG(Emote, "GAS.Abilities.Emote");
 		UE_DEFINE_GAMEPLAY_TAG(Suicide, "GAS.Abilities.Suicide");
+		UE_DEFINE_GAMEPLAY_TAG(Resurrect, "GAS.Abilities.Resurrect");
 	}
 
 	namespace SetByCaller

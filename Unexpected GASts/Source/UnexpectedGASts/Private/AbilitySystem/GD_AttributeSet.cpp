@@ -31,17 +31,28 @@ void UGD_AttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallbac
 	// if (Data.EvaluatedData.Attribute == GetManaAttribute() && bAttributesInitialized)
 	// 	SetMana(FMath::Clamp(GetMana(), 0.f, GetMaxMana()));
 
-	if (Data.EvaluatedData.Attribute == GetHealthAttribute() && GetHealth() <= 0.f)
+	if (Data.EvaluatedData.Attribute == GetHealthAttribute())
 	{
+		//TODO: maybe this would make sense to move into a GameplayEffect. 
 		UAbilitySystemComponent* ASC = &Data.Target;
-		if (!ASC->HasMatchingGameplayTag(GASTags::States::Dead))
+		if (ASC->HasMatchingGameplayTag(GASTags::States::Dead))
 		{
-			ASC->AddLooseGameplayTag(GASTags::States::Dead, 1, EGameplayTagReplicationState::TagOnly);
+			if (GetHealth() > 0.f)
+			{
+				ASC->RemoveLooseGameplayTag(GASTags::States::Dead, 1, EGameplayTagReplicationState::TagOnly);
+			}
+		}
+		else
+		{
+			if (GetHealth() <= 0.f)
+			{
+				ASC->AddLooseGameplayTag(GASTags::States::Dead, 1, EGameplayTagReplicationState::TagOnly);
 
-			FGameplayEventData Payload;
-			Payload.Instigator = Data.Target.GetAvatarActor();
-			//TODO: implement this KillScored part
-			//UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(Data.EffectSpec.GetEffectContext().GetInstigator(), GASTags::Events::KillScored, Payload);
+				FGameplayEventData Payload;
+				Payload.Instigator = Data.Target.GetAvatarActor();
+				//TODO: implement this KillScored part
+				//UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(Data.EffectSpec.GetEffectContext().GetInstigator(), GASTags::Events::KillScored, Payload);
+			}
 		}
 	}
 

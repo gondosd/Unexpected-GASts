@@ -35,6 +35,7 @@ void AGD_GameplayPlayerController::SetupInputComponent()
 	EnhancedInputComponent->BindAction(TertiaryAction, ETriggerEvent::Triggered, this, &ThisClass::Tertiary);
 	EnhancedInputComponent->BindAction(DashAction, ETriggerEvent::Triggered, this, &ThisClass::Dash);
 	EnhancedInputComponent->BindAction(EmoteAction, ETriggerEvent::Triggered, this, &ThisClass::Emote);
+	EnhancedInputComponent->BindAction(ResurrectAction, ETriggerEvent::Triggered, this, &ThisClass::Resurrect);
 }
 
 void AGD_GameplayPlayerController::Jump()
@@ -130,6 +131,11 @@ void AGD_GameplayPlayerController::Tertiary()
 void AGD_GameplayPlayerController::Emote()
 {
 	ActivateAbility(GASTags::Abilities::Emote);
+}
+
+void AGD_GameplayPlayerController::Resurrect()
+{
+	ActivateAbility(GASTags::Abilities::Resurrect);
 }
 
 void AGD_GameplayPlayerController::Dash()
