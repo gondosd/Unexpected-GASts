@@ -88,5 +88,6 @@ namespace GASTags
 
 	namespace Cooldown
 	{
+		UE_DEFINE_GAMEPLAY_TAG(Cooldowns, "GAS.Cooldowns"); //Base gameplaytag, the children will be implemented as editor tags
 	}
 }

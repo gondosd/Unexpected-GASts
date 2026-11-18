@@ -24,7 +24,7 @@ namespace FrontendGameplayTags
 
 		UNEXPECTEDGASTS_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Frontend_Widget_ConfirmScreen);
 		UNEXPECTEDGASTS_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Frontend_Widget_KeyRemapScreen);
-		
+
 		//In-game Widgets
 		UNEXPECTEDGASTS_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Game_Widget_MenuScreen);
 	}
@@ -61,12 +61,13 @@ namespace GASTags
 		{
 			UNEXPECTEDGASTS_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(AttackNotify);
 		}
+
 		//Combat
-			//DamageTaken
-			//Healed
-			//Kill
+		//DamageTaken
+		//Healed
+		//Kill
 		//System
-			//QuestCompleted
+		//QuestCompleted
 	}
 
 	namespace Status
@@ -76,7 +77,7 @@ namespace GASTags
 		UNEXPECTEDGASTS_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Chilled);
 		UNEXPECTEDGASTS_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Frozen);
 	}
-	
+
 	namespace States
 	{
 		UNEXPECTEDGASTS_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Dead);
@@ -87,5 +88,6 @@ namespace GASTags
 
 	namespace Cooldown
 	{
+		UNEXPECTEDGASTS_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Cooldowns); //Base gameplaytag, the children will be implemented as editor tags
 	}
 }
