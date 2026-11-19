@@ -34,6 +34,11 @@
 		{
 			"Name": "GameplayAbilities",
 			"Enabled": true
+		},
+		{
+			"Name": "EasyItchPush",
+			"Enabled": true,
+			"MarketplaceURL": "https://www.fab.com/sellers/Tessermind"
 		}
 	]
 }
