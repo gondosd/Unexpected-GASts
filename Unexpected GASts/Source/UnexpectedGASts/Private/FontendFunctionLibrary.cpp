@@ -2,9 +2,13 @@
 
 
 #include "FontendFunctionLibrary.h"
+
+#include "AbilitySystem/GD_AbilitySystemComponent.h"
 #include "FrontendSettings/FrontendDeveloperSettings.h"
 #include "Widgets/Widget_PrimaryLayout.h"
 
+
+#pragma region CommonUI
 TSoftClassPtr<UWidget_PrimaryLayout> UFontendFunctionLibrary::GetPrimaryLayoutWidgetClass()
 {
 	const UFrontendDeveloperSettings* FrontendDeveloperSettings = GetDefault<UFrontendDeveloperSettings>();
@@ -27,7 +31,7 @@ TSoftObjectPtr<UTexture2D> UFontendFunctionLibrary::GetOptionsSoftImageByTag(FGa
 {
 	const UFrontendDeveloperSettings* FrontendDeveloperSettings = GetDefault<UFrontendDeveloperSettings>();
 	checkf(FrontendDeveloperSettings->OptionsScreenSoftImageMap.Contains(InImageTag),
-		   TEXT("Cound not find the corresponding image under the tag %s"), *InImageTag.ToString());
+	       TEXT("Cound not find the corresponding image under the tag %s"), *InImageTag.ToString());
 
 	return FrontendDeveloperSettings->OptionsScreenSoftImageMap.FindRef(InImageTag);
 }
@@ -41,3 +45,22 @@ bool UFontendFunctionLibrary::FileLoadString(FString FilePath, FString& OutStrin
 {
 	return FFileHelper::LoadFileToString(OutString, *(FPaths::ProjectContentDir() + FilePath));
 }
+
+
+#pragma endregion
+
+#pragma region GAS
+
+float UFontendFunctionLibrary::GetTagTimeRemaining(UAbilitySystemComponent* ASC, FGameplayTag TagToWatch, float& OutMaxDuration)
+{
+	const UGD_AbilitySystemComponent* GD_ASC = Cast<UGD_AbilitySystemComponent>(ASC); 
+	if (!GD_ASC)
+	{
+		OutMaxDuration = 0.f;
+		return 0.f;
+	}
+
+	return GD_ASC->GetTagTimeRemaining(TagToWatch, OutMaxDuration);
+}
+
+#pragma endregion

@@ -3,8 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "CommonUserWidget.h"
 #include "GameplayEffectTypes.h"
+#include "GD_StatusWidget.h"
 #include "GD_AttributeWidget.generated.h"
 
 
@@ -24,30 +24,22 @@ struct FGD_AttributePair
 };
 
 UCLASS()
-class UNEXPECTEDGASTS_API UGD_AttributeWidget : public UCommonUserWidget
+class UNEXPECTEDGASTS_API UGD_AttributeWidget : public UGD_StatusWidget
 {
 	GENERATED_BODY()
 
 protected:
 	virtual void NativeConstruct() override;
-
+	
+	virtual void InitializeWidget(UAbilitySystemComponent* ASC, UAttributeSet* AS) override;
+	
 	UFUNCTION(BlueprintImplementableEvent, meta = (DisplayName = "On Attribute Change"))
 	void BP_OnAttributeChange(float NewValue, float NewMaxValue, float OldValue);
-	
-	bool IsASCInitialized() const;
 
 private:
-	UFUNCTION()
-	void InitializeWidget(UAbilitySystemComponent* ASC, UAttributeSet* AS);
-	
 	void BindAttributeChanges(UAbilitySystemComponent* ASC, const FGameplayAttribute& Attribute);
 	void AttributePairChanged(float OldValue = 0.f);
 	
-public:
-	//TODO: make a setter for this, that cleans up the binginds and retriggers the init-flow
-	TWeakObjectPtr<AGD_BaseCharacter> GAS_Character; //We can get the attributes from it, what to follow
-		
-private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "GAS|Attributes", meta =(AllowPrivateAccess = true))
 	FGD_AttributePair AttributeMap; //Value, MaxValue
 };

@@ -48,6 +48,28 @@ void UGD_AbilitySystemComponent::AddToAbilityLevel(TSubclassOf<UGameplayAbility>
 	}
 }
 
+float UGD_AbilitySystemComponent::GetTagTimeRemaining(FGameplayTag TagToWatch, float& OutMaxDuration) const
+{
+	OutMaxDuration = 0.f;
+	
+	FGameplayEffectQuery Query = FGameplayEffectQuery::MakeQuery_MatchAnyOwningTags(FGameplayTagContainer(TagToWatch));
+
+	TArray<TPair<float, float>> TimeAndDuration = GetActiveEffectsTimeRemainingAndDuration(Query);
+	if (TimeAndDuration.Num() == 0) return 0.f;
+
+	// If several effects grant the same tag the longest one counts
+	float BestRemaining = 0.f;
+	for (const TPair<float, float>& Pair : TimeAndDuration)
+	{
+		if (Pair.Key > BestRemaining)
+		{
+			BestRemaining = Pair.Key;
+			OutMaxDuration = Pair.Value;
+		}
+	}
+	return BestRemaining;
+}
+
 void UGD_AbilitySystemComponent::HandleAutoActivatedAbility(const FGameplayAbilitySpec& AbilitySpec)
 {
 	//TODO: i want to reconsider this direction and maybe remove activate on given tag alltogether

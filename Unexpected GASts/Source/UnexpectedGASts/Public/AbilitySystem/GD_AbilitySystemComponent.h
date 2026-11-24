@@ -22,6 +22,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "GAS|Abilities")
 	void AddToAbilityLevel(TSubclassOf<UGameplayAbility> AbilityClass, int32 LevelToAdd = 1);
 	
+	UFUNCTION(BlueprintCallable, Category = "GAS")
+	float GetTagTimeRemaining(FGameplayTag TagToWatch, float& OutMaxDuration) const;
+	
 private:
 	void HandleAutoActivatedAbility(const FGameplayAbilitySpec& AbilitySpec);
 };
