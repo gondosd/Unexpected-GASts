@@ -70,18 +70,17 @@ namespace GASTags
 		//QuestCompleted
 	}
 
-	namespace Status
+	namespace Buffs //Buffs and Debuffs
 	{
-		UE_DEFINE_GAMEPLAY_TAG(Wet, "GAS.Status.Wet");	
-		UE_DEFINE_GAMEPLAY_TAG(Burning, "GAS.Status.Burning");	
-		UE_DEFINE_GAMEPLAY_TAG(Chilled, "GAS.Status.Chilled");	
-		UE_DEFINE_GAMEPLAY_TAG(Frozen, "GAS.Status.Frozen");	
+		UE_DEFINE_GAMEPLAY_TAG(Wet, "GAS.Buffs.Wet");	
+		UE_DEFINE_GAMEPLAY_TAG(Burning, "GAS.Buffs.Burning");	
+		UE_DEFINE_GAMEPLAY_TAG(Chilled, "GAS.Buffs.Chilled");	
+		UE_DEFINE_GAMEPLAY_TAG(Frozen, "GAS.Buffs.Frozen");	
 	}
 	
 	namespace States
 	{
 		UE_DEFINE_GAMEPLAY_TAG(Dead, "GAS.States.Dead");	
-		UE_DEFINE_GAMEPLAY_TAG(Stunned, "GAS.States.Stunned");	
 		UE_DEFINE_GAMEPLAY_TAG(Invulnerable, "GAS.States.Invulnerable");	
 		//Airborne?
 	}

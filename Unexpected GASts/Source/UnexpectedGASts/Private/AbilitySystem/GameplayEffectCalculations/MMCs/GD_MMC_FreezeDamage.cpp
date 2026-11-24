@@ -27,7 +27,7 @@ float UGD_MMC_FreezeDamage::CalculateBaseMagnitude_Implementation(const FGamepla
 	float Damage = BaseDamage.GetValueAtLevel(Spec.GetLevel());
 	//float Damage = Spec.GetSetByCallerMagnitude(GASTags::SetByCaller::FILLTAG, false, 0.f);  //TODO if I decide to drive this effect the SetByCaller way
 
-	if (EvalParams.TargetTags && EvalParams.TargetTags->HasTag(GASTags::Status::Wet))
+	if (EvalParams.TargetTags && EvalParams.TargetTags->HasTag(GASTags::Buffs::Wet))
 	{
 		Damage += (Health * FreezeDamageMultiplierFromHealth);
 	}

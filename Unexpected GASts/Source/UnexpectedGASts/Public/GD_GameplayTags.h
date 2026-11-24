@@ -70,7 +70,7 @@ namespace GASTags
 		//QuestCompleted
 	}
 
-	namespace Status
+	namespace Buffs //Buffs and Debuffs
 	{
 		UNEXPECTEDGASTS_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Wet);
 		UNEXPECTEDGASTS_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Burning);
@@ -81,7 +81,6 @@ namespace GASTags
 	namespace States
 	{
 		UNEXPECTEDGASTS_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Dead);
-		UNEXPECTEDGASTS_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Stunned);
 		UNEXPECTEDGASTS_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Invulnerable);
 		//Airborne?
 	}
